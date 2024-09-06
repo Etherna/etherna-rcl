@@ -2,7 +2,7 @@
 
 ## Overview
 
-A Razor Class Library for share resources between Etherna Services on Asp.Net Core.
+A Razor Class Library to share resources between Etherna services on Asp.Net Core.
 
 ## Issue reports
 
