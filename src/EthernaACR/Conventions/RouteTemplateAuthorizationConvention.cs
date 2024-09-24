@@ -42,10 +42,11 @@ namespace Etherna.ACR.Conventions
                         routeTemplate,
                         StringComparison.OrdinalIgnoreCase) ?? false);
             
-                //give priority to authorize attribute
-                var hasAuthorizeAttribute = controller.Attributes.OfType<AuthorizeAttribute>().Any(); 
+                //give priority to Authorize and AllowAnonymous attributes
+                var hasAuthAttributes = controller.Attributes.OfType<AllowAnonymousAttribute>().Any() ||
+                                        controller.Attributes.OfType<AuthorizeAttribute>().Any(); 
             
-                if (isInRouteTemplate && !hasAuthorizeAttribute)
+                if (isInRouteTemplate && !hasAuthAttributes)
                     controller.Filters.Add(new AuthorizeFilter(policyName));
             }
         }
